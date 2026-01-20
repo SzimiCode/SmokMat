@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:aplikacjamatematyka/features/quiz/viewmodel/choose_lesson_page_viewmodel.dart';
 import 'package:aplikacjamatematyka/core/data/notifiers.dart';
 import 'package:aplikacjamatematyka/services/api_service.dart';
+import 'package:aplikacjamatematyka/core/theme/app_pallete.dart';
 
 class ChooseLessonPage extends StatefulWidget {
   ChooseLessonPage({super.key});
@@ -52,8 +53,8 @@ class _ChooseLessonPageState extends State<ChooseLessonPage> {
       body: Padding(
         padding: const EdgeInsets.only(top: 20.0),
         child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
+          decoration: BoxDecoration(
+            color: Pallete.getBackgroundColor(context),
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(40),
             ),
@@ -61,7 +62,6 @@ class _ChooseLessonPageState extends State<ChooseLessonPage> {
           child: ValueListenableBuilder(
             valueListenable: isLoadingCourses,
             builder: (context, isLoading, child) {
-              // LOADING STATE
               if (isLoading) {
                 return Center(
                   child: Column(
@@ -75,7 +75,7 @@ class _ChooseLessonPageState extends State<ChooseLessonPage> {
                         'Ładowanie kursów...',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.grey,
+                          color: Pallete.getSecondaryTextColor(context)
                         ),
                       ),
                     ],
@@ -83,7 +83,6 @@ class _ChooseLessonPageState extends State<ChooseLessonPage> {
                 );
               }
 
-              // ERROR STATE
               return ValueListenableBuilder(
                 valueListenable: errorMessage,
                 builder: (context, error, child) {
@@ -118,11 +117,9 @@ class _ChooseLessonPageState extends State<ChooseLessonPage> {
                     );
                   }
 
-                  // COURSES LIST
                   return ValueListenableBuilder(
                     valueListenable: coursesNotifier,
                     builder: (context, courses, child) {
-                      // EMPTY STATE
                       if (courses.isEmpty) {
                         return Center(
                           child: Column(
@@ -131,14 +128,14 @@ class _ChooseLessonPageState extends State<ChooseLessonPage> {
                               Icon(
                                 Icons.school_outlined,
                                 size: 64,
-                                color: Colors.grey,
+                                color: Pallete.getSecondaryTextColor(context),
                               ),
                               SizedBox(height: 16),
                               Text(
                                 'Brak kursów w tej kategorii',
                                 style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.grey,
+                                  color: Pallete.getSecondaryTextColor(context),
                                 ),
                               ),
                               SizedBox(height: 8),
@@ -151,7 +148,7 @@ class _ChooseLessonPageState extends State<ChooseLessonPage> {
                                         : 'Wybierz kategorię powyżej',
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: Colors.grey[600],
+                                      color: Pallete.getSecondaryTextColor(context),
                                     ),
                                   );
                                 },
@@ -161,7 +158,6 @@ class _ChooseLessonPageState extends State<ChooseLessonPage> {
                         );
                       }
 
-                      // COURSES LIST
                       return ListView.builder(
                         padding: const EdgeInsets.only(top: 20),
                         itemCount: courses.length,

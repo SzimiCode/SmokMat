@@ -1,10 +1,8 @@
 import 'package:aplikacjamatematyka/core/data/notifiers.dart';
 import 'package:aplikacjamatematyka/features/quiz/model/class_model.dart';
 import 'package:aplikacjamatematyka/features/quiz/model/category_model.dart';
-import 'package:aplikacjamatematyka/features/quiz/model/course_model.dart';
 import 'package:aplikacjamatematyka/features/quiz/model/course_progress_model.dart';
 import 'package:aplikacjamatematyka/features/quiz/repository/course_repository.dart';
-import 'package:flutter/material.dart';
 
 class ChooseLessonPageViewmodel {
   final CourseRepository _repository = CourseRepository();

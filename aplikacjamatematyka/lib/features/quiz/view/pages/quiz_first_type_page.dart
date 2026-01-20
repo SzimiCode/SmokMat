@@ -14,7 +14,6 @@ class QuizFirstTypePage extends StatelessWidget {
       create: (_) => QuizPageFirstTypeViewModel(),
       child: Consumer<QuizPageFirstTypeViewModel>(
         builder: (context, vm, child) {
-          // Stan ładowania
           if (vm.isLoading) {
             return Scaffold(
               backgroundColor: Colors.white,
@@ -32,7 +31,7 @@ class QuizFirstTypePage extends StatelessWidget {
           if (vm.errorMessage != null) {
             return Scaffold(
               backgroundColor: Colors.white,
-              appBar: QuizAppBar(  // ✅ UŻYWAJ TEGO SAMEGO AppBar co w działającym quizie
+              appBar: QuizAppBar( 
                 progress: 0.0,
                 isFinished: false,
               ),
@@ -56,7 +55,7 @@ class QuizFirstTypePage extends StatelessWidget {
                       const SizedBox(height: 24),
                       ElevatedButton(
                         onPressed: () {
-                          selectedPageNotifier.value = 6;  // ✅ LUB jakakolwiek strona poprzednia
+                          selectedPageNotifier.value = 6;  
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 6, 197, 70),
@@ -77,14 +76,11 @@ class QuizFirstTypePage extends StatelessWidget {
             );
           }
 
-          // Stan ukończenia quizu
          if (vm.isQuizFinished) {
-            // Wywołaj nawigację PO zakończeniu budowania widgetu
             WidgetsBinding.instance.addPostFrameCallback((_) {
               vm.goToFinishQuiz();
             });
             
-            // Zwróć prosty ekran ładowania podczas przekierowania
             return const Scaffold(
               backgroundColor: Colors.white,
               body: Center(
@@ -93,7 +89,6 @@ class QuizFirstTypePage extends StatelessWidget {
             );
           }
 
-          // Stan normalny - quiz w trakcie
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: QuizAppBar(
@@ -110,7 +105,6 @@ class QuizFirstTypePage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          // Numer pytania
                           Text(
                             'Pytanie ${vm.currentQuestionIndex + 1} / ${vm.allQuestions.length}',
                             textAlign: TextAlign.center,
@@ -121,7 +115,6 @@ class QuizFirstTypePage extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           
-                          // Treść pytania
                           Text(
                             vm.currentQuestionText,
                             textAlign: TextAlign.center,
@@ -133,7 +126,6 @@ class QuizFirstTypePage extends StatelessWidget {
                           ),
                           const SizedBox(height: 30),
                           
-                          // Przyciski odpowiedzi
                           ...vm.shuffledAnswers.map((answer) => Padding(
                             padding: const EdgeInsets.only(bottom: 12),
                             child: AnswerButtonFirstType(
@@ -148,7 +140,6 @@ class QuizFirstTypePage extends StatelessWidget {
                   ),
                 ),
                 
-                // Przycisk "Dalej"
                 Padding(
                   padding: const EdgeInsets.fromLTRB(35, 12, 35, 35),
                   child: SizedBox(

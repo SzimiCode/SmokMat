@@ -28,7 +28,6 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Future<void> _handleLogin() async {
-    // Walidacja formularza
     if (!_formKey.currentState!.validate()) {
       return;
     }
@@ -115,7 +114,6 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 const SizedBox(height: 100),
 
-                // WHITE CARD
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   padding: const EdgeInsets.all(22),
@@ -156,7 +154,6 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         const SizedBox(height: 15),
 
-                        // Password field
                         TextFormField(
                           controller: _passwordController,
                           obscureText: true,
@@ -177,7 +174,6 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         const SizedBox(height: 10),
 
-                        // Error message
                         if (_errorMessage != null)
                           Container(
                             padding: const EdgeInsets.all(10),
@@ -207,7 +203,6 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                         const SizedBox(height: 15),
 
-                        // SIGN IN BUTTON
                         ElevatedButton(
                           onPressed: _isLoading ? null : _handleLogin,
                           style: ElevatedButton.styleFrom(
@@ -241,7 +236,6 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 const SizedBox(height: 10),
 
-                // Link do rejestracji
                 GestureDetector(
                   onTap: () {
                     Navigator.push(

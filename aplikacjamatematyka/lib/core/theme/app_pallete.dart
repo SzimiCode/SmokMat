@@ -4,7 +4,6 @@ class Pallete {
   static const purpleColor = Colors.purple;
   static const purplemidColor = Color.fromARGB(255, 214, 166, 219);
   static const inactiveBottomBarItemColor = Color(0xffababab);
-
   static const Color backgroundColor = Color.fromARGB(255, 243, 237, 245);
   static const Color whiteColor = Colors.white;
   static const Color blackColor = Colors.black;
@@ -16,4 +15,34 @@ class Pallete {
   static const Color cyanColor = Color(0xFF0CC0DF);
   static const Color lightpurpleColor = Color(0xFFC3BAFA);
   static const Color darkcyanColor = Color.fromARGB(255, 9, 136, 158);
+
+  static Color getBackgroundColor(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark
+        ? const Color(0xFF121212)
+        : backgroundColor;
+  }
+  
+  static Color getCardBackground(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark
+        ? const Color(0xFF1E1E1E)
+        : whiteColor;
+  }
+  
+  static Color getTextColor(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark
+        ? Colors.white
+        : Colors.black;
+  }
+  
+  static Color getSecondaryTextColor(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark
+        ? Colors.grey[400]!
+        : Colors.grey[600]!;
+  }
+
+  static Color getGreyBackground(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark
+        ? const Color(0xFF2C2C2C)
+        : grey2Color;
+  }
 }

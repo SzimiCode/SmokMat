@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:aplikacjamatematyka/core/theme/app_pallete.dart';
+
 
 class LessonCard extends StatelessWidget {
   final int number;
@@ -40,10 +42,10 @@ class LessonCard extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 number.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Pallete.getTextColor(context),
                 ),
               ),
             ),

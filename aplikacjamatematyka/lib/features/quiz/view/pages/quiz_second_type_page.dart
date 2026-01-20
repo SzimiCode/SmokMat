@@ -13,7 +13,6 @@ class QuizSecondTypePage extends StatelessWidget {
       create: (_) => QuizPageSecondTypeViewModel(),
       child: Consumer<QuizPageSecondTypeViewModel>(
         builder: (context, vm, child) {
-          // Stan ładowania
           if (vm.isLoading) {
             return Scaffold(
               backgroundColor: Colors.white,
@@ -27,11 +26,10 @@ class QuizSecondTypePage extends StatelessWidget {
             );
           }
 
-          // Stan błędu
           if (vm.errorMessage != null) {
             return Scaffold(
               backgroundColor: Colors.white,
-              appBar: QuizAppBar(  // ✅ UŻYWAJ TEGO SAMEGO AppBar co w działającym quizie
+              appBar: QuizAppBar(  
                 progress: 0.0,
                 isFinished: false,
               ),
@@ -55,7 +53,7 @@ class QuizSecondTypePage extends StatelessWidget {
                       const SizedBox(height: 24),
                       ElevatedButton(
                         onPressed: () {
-                          selectedPageNotifier.value = 6;  // ✅ LUB jakakolwiek strona poprzednia
+                          selectedPageNotifier.value = 6;  
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 6, 197, 70),
@@ -76,14 +74,11 @@ class QuizSecondTypePage extends StatelessWidget {
             );
           }
 
-          // Stan ukończenia quizu
          if (vm.isQuizFinished) {
-            // Wywołaj nawigację PO zakończeniu budowania widgetu
             WidgetsBinding.instance.addPostFrameCallback((_) {
               vm.goToFinishQuiz();
             });
             
-            // Zwróć prosty ekran ładowania podczas przekierowania
             return const Scaffold(
               backgroundColor: Colors.white,
               body: Center(
@@ -92,7 +87,6 @@ class QuizSecondTypePage extends StatelessWidget {
             );
           }
 
-          // Stan normalny - quiz w trakcie
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: QuizAppBar(
@@ -111,7 +105,6 @@ class QuizSecondTypePage extends StatelessWidget {
                         children: [
                           const SizedBox(height: 20),
                           
-                          // Numer pytania
                           Text(
                             'Pytanie ${vm.currentQuestionIndex + 1} / ${vm.allQuestions.length}',
                             textAlign: TextAlign.center,
@@ -122,7 +115,6 @@ class QuizSecondTypePage extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           
-                          // Typ pytania
                           Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 12,
@@ -148,7 +140,6 @@ class QuizSecondTypePage extends StatelessWidget {
                           ),
                           const SizedBox(height: 16),
                           
-                          // Treść pytania
                           Text(
                             vm.currentQuestionText,
                             textAlign: TextAlign.center,
@@ -160,7 +151,6 @@ class QuizSecondTypePage extends StatelessWidget {
                           ),
                           const SizedBox(height: 30),
                           
-                          // YESNO - guziki Tak/Nie
                           if (vm.isCurrentQuestionYesNo) ...[
                             Row(
                               children: [
@@ -217,7 +207,6 @@ class QuizSecondTypePage extends StatelessWidget {
                             ),
                           ],
                           
-                          // ENTER - TextField
                           if (!vm.isCurrentQuestionYesNo) ...[
                             TextField(
                               controller: vm.answerController,
@@ -265,7 +254,6 @@ class QuizSecondTypePage extends StatelessWidget {
                           
                           const SizedBox(height: 20),
                           
-                          // Wskaźnik poprawności (po odpowiedzi)
                           if (vm.answerState != AnswerState.normal) ...[
                             Container(
                               padding: const EdgeInsets.all(12),
@@ -309,7 +297,6 @@ class QuizSecondTypePage extends StatelessWidget {
                   ),
                 ),
                 
-                // Przycisk "Dalej"
                 Padding(
                   padding: const EdgeInsets.fromLTRB(35, 12, 35, 35),
                   child: SizedBox(
