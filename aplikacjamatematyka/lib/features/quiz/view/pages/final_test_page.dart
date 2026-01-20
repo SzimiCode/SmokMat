@@ -27,7 +27,8 @@ class _FinalTestPageState extends State<FinalTestPage> {
         builder: (context, vm, child) {
           if (vm.isLoading) {
             return Scaffold(
-              backgroundColor: Pallete.getBackgroundColor(context),
+              backgroundColor: Pallete.getCardBackground(context)
+,
               appBar: AppBar(
                 title: Text('Ładowanie testu...'),
                 backgroundColor: Pallete.getCardBackground(context),
@@ -42,7 +43,7 @@ class _FinalTestPageState extends State<FinalTestPage> {
 
           if (vm.errorMessage != null) {
             return Scaffold(
-              backgroundColor: Pallete.getBackgroundColor(context),
+              backgroundColor: Pallete.getCardBackground(context),
               appBar: QuizAppBar(
                 progress: 0.0,
                 isFinished: false,
@@ -101,7 +102,8 @@ class _FinalTestPageState extends State<FinalTestPage> {
             });
             
             return Scaffold(
-              backgroundColor: Pallete.getBackgroundColor(context),
+              backgroundColor: Pallete.getCardBackground(context)
+,
               body: Center(
                 child: CircularProgressIndicator(
                   color: Pallete.purpleColor,
@@ -111,7 +113,8 @@ class _FinalTestPageState extends State<FinalTestPage> {
           }
 
           return Scaffold(
-            backgroundColor: Pallete.getBackgroundColor(context),
+            backgroundColor: Pallete.getCardBackground(context)
+,
             appBar: QuizAppBar(
               progress: vm.progress,
               isFinished: vm.isTestFinished,

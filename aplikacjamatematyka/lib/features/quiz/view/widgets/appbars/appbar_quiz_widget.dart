@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aplikacjamatematyka/core/data/notifiers.dart';
-
+import 'package:aplikacjamatematyka/core/theme/app_pallete.dart';
 
 class QuizAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double progress;   
@@ -17,7 +17,7 @@ class QuizAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       toolbarHeight: 100,
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.white,
+      backgroundColor: Pallete.getCardBackground(context),
       title: Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Column(
@@ -27,17 +27,27 @@ class QuizAppBar extends StatelessWidget implements PreferredSizeWidget {
             Row(
               children: [
                 IconButton(
-                  icon: const Icon(Icons.close, color: Colors.black),
+                  icon: Icon(
+                    Icons.close, 
+                    color: Pallete.getTextColor(context),
+                  ),
                   onPressed: () {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        title: const Text(
+                        backgroundColor: Pallete.getCardBackground(context),
+                        title: Text(
                           "Czy na pewno chcesz wyjść?",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Pallete.getTextColor(context),
+                          ),
                         ),
-                        content: const Text(
+                        content: Text(
                           "Zostaniesz przeniesiony do menu i utracisz postęp.",
+                          style: TextStyle(
+                            color: Pallete.getTextColor(context),
+                          ),
                         ),
                         actionsPadding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 12),
@@ -97,7 +107,9 @@ class QuizAppBar extends StatelessWidget implements PreferredSizeWidget {
                       Container(
                         height: 8,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 216, 168, 224),
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.grey[700]
+                              : const Color.fromARGB(255, 216, 168, 224),
                           borderRadius: BorderRadius.circular(4),
                         ),
                       ),

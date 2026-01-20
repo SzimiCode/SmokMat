@@ -29,7 +29,8 @@ class _FinalLearningPageState extends State<FinalLearningPage> {
     
           if (vm.isLoading) {
             return Scaffold(
-              backgroundColor: Pallete.getBackgroundColor(context),
+              backgroundColor: Pallete.getCardBackground(context)
+,
               appBar: AppBar(
                 title: Text('Ładowanie...'),
                 backgroundColor: Pallete.getCardBackground(context),
@@ -45,7 +46,7 @@ class _FinalLearningPageState extends State<FinalLearningPage> {
 
           if (vm.errorMessage != null) {
             return Scaffold(
-              backgroundColor: Pallete.getBackgroundColor(context),
+              backgroundColor: Pallete.getCardBackground(context),
               appBar: QuizAppBar(
                 progress: 0.0,
                 isFinished: false,
@@ -100,7 +101,8 @@ class _FinalLearningPageState extends State<FinalLearningPage> {
             });
             
             return Scaffold(
-              backgroundColor: Pallete.getBackgroundColor(context),
+              backgroundColor: Pallete.getCardBackground(context)
+,
               body: Center(
                 child: CircularProgressIndicator(
                   color: Pallete.purpleColor,
@@ -110,7 +112,8 @@ class _FinalLearningPageState extends State<FinalLearningPage> {
           }
 
           return Scaffold(
-            backgroundColor: Pallete.getBackgroundColor(context),
+            backgroundColor: Pallete.getCardBackground(context)
+,
             appBar: QuizAppBar(
               progress: vm.progress,
               isFinished: vm.isLearningFinished,
