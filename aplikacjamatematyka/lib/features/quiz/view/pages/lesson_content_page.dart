@@ -2,6 +2,7 @@ import 'package:aplikacjamatematyka/features/quiz/view/widgets/contents/content_
 import 'package:flutter/material.dart';
 import 'package:aplikacjamatematyka/features/quiz/viewmodel/lesson_content_page.dart';
 import 'package:aplikacjamatematyka/features/quiz/view/widgets/appbars/appbar_lesson_widget.dart';
+import 'package:aplikacjamatematyka/core/theme/app_pallete.dart';
 
 class LessonContentPage extends StatefulWidget {
   LessonContentPage({super.key});
@@ -26,16 +27,15 @@ class _LessonContentPageState extends State<LessonContentPage> {
           Expanded(
             child: Container(
               width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(
+              decoration: BoxDecoration(
+                color: Pallete.getBackgroundColor(context),
+                borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(40),
                 ),
               ),
               child: const Padding(
                 padding: EdgeInsets.all(2.0),
-                child: ContentLessonWidget(
-                ),
+                child: ContentLessonWidget(),
               ),
             ),
           ),

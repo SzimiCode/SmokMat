@@ -35,12 +35,12 @@ class _FinishQuizPageState extends State<FinishQuizPage> {
         children: [
 
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
                   Pallete.purpleColor,
                   Pallete.purplemidColor,
-                  Pallete.whiteColor,
+                  Pallete.getBackgroundColor(context),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -86,11 +86,11 @@ class _FinishQuizPageState extends State<FinishQuizPage> {
                   child: Container(
                     padding: const EdgeInsets.all(22),
                     decoration: BoxDecoration(
-                      color: Pallete.whiteColor,
+                      color: Pallete.getCardBackground(context),
                       borderRadius: BorderRadius.circular(24),
                       boxShadow: [
                         BoxShadow(
-                          color: Pallete.blackColor.withOpacity(0.1),
+                          color: Colors.black.withOpacity(0.1),
                           blurRadius: 20,
                           offset: const Offset(0, 4),
                         ),
@@ -100,11 +100,12 @@ class _FinishQuizPageState extends State<FinishQuizPage> {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           "Gratulacje!",
                           style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
+                            color: Pallete.getTextColor(context),
                           ),
                           textAlign: TextAlign.center,
                         ),

@@ -6,6 +6,7 @@ import 'package:aplikacjamatematyka/core/data/notifiers.dart';
 import 'package:aplikacjamatematyka/features/quiz/view/widgets/quiz_types/quiz_first_type_widget.dart';
 import 'package:aplikacjamatematyka/features/quiz/view/widgets/quiz_types/quiz_second_type_widget.dart';
 import 'package:aplikacjamatematyka/features/quiz/view/widgets/quiz_types/quiz_third_type_widget.dart';
+import 'package:aplikacjamatematyka/core/theme/app_pallete.dart';
 
 class FinalTestPage extends StatefulWidget {
   const FinalTestPage({super.key});
@@ -26,20 +27,22 @@ class _FinalTestPageState extends State<FinalTestPage> {
         builder: (context, vm, child) {
           if (vm.isLoading) {
             return Scaffold(
-              backgroundColor: Colors.white,
+              backgroundColor: Pallete.getBackgroundColor(context),
               appBar: AppBar(
-                title: const Text('Ładowanie testu...'),
-                backgroundColor: Colors.white,
+                title: Text('Ładowanie testu...'),
+                backgroundColor: Pallete.getCardBackground(context),
               ),
-              body: const Center(
-                child: CircularProgressIndicator(),
+              body: Center(
+                child: CircularProgressIndicator(
+                  color: Pallete.purpleColor,
+                ),
               ),
             );
           }
 
           if (vm.errorMessage != null) {
             return Scaffold(
-              backgroundColor: Colors.white,
+              backgroundColor: Pallete.getBackgroundColor(context),
               appBar: QuizAppBar(
                 progress: 0.0,
                 isFinished: false,
@@ -59,7 +62,10 @@ class _FinalTestPageState extends State<FinalTestPage> {
                       Text(
                         vm.errorMessage!,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 16),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Pallete.getTextColor(context),
+                        ),
                       ),
                       const SizedBox(height: 24),
                       ElevatedButton(
@@ -94,16 +100,18 @@ class _FinalTestPageState extends State<FinalTestPage> {
               }
             });
             
-            return const Scaffold(
-              backgroundColor: Colors.white,
+            return Scaffold(
+              backgroundColor: Pallete.getBackgroundColor(context),
               body: Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Pallete.purpleColor,
+                ),
               ),
             );
           }
 
           return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Pallete.getBackgroundColor(context),
             appBar: QuizAppBar(
               progress: vm.progress,
               isFinished: vm.isTestFinished,
@@ -128,9 +136,9 @@ class _FinalTestPageState extends State<FinalTestPage> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 35),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Pallete.getCardBackground(context),
         border: Border(
-          bottom: BorderSide(color: Colors.grey.shade200),
+          bottom: BorderSide(color: Pallete.getGreyBackground(context)),
         ),
       ),
       child: Column(
@@ -158,7 +166,7 @@ class _FinalTestPageState extends State<FinalTestPage> {
             'Pytanie ${vm.currentQuestionNumber} / ${vm.totalQuestions}',
             style: TextStyle(
               fontSize: 14,
-              color: Colors.grey.shade600,
+              color: Pallete.getSecondaryTextColor(context),
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -169,7 +177,7 @@ class _FinalTestPageState extends State<FinalTestPage> {
             'Wynik: ${vm.correctAnswersCount}/${vm.totalAnswered}',
             style: TextStyle(
               fontSize: 12,
-              color: Colors.grey.shade500,
+              color: Pallete.getSecondaryTextColor(context),
             ),
           ),
         ],
@@ -182,7 +190,12 @@ class _FinalTestPageState extends State<FinalTestPage> {
     final question = vm.currentQuestion;
     
     if (question == null) {
-      return const Center(child: Text('Brak pytania'));
+      return Center(
+        child: Text(
+          'Brak pytania',
+          style: TextStyle(color: Pallete.getTextColor(context)),
+        ),
+      );
     }
 
     switch (question.questionType) {
@@ -211,7 +224,12 @@ class _FinalTestPageState extends State<FinalTestPage> {
         );
       
       default:
-        return Center(child: Text('Nieznany typ: ${question.questionType}'));
+        return Center(
+          child: Text(
+            'Nieznany typ: ${question.questionType}',
+            style: TextStyle(color: Pallete.getTextColor(context)),
+          ),
+        );
     }
   }
 
